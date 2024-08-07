@@ -30,8 +30,8 @@ export class AssetLoader {
 
     // Character mesh
     private loadModels(fbxLoader: FBXLoader) {
-        fbxLoader.load('./assets/character.fbx', data => {
-            //data.scale.multiplyScalar(0.01);
+        fbxLoader.load('./assets/Y Bot.fbx', data => {
+            data.scale.multiplyScalar(0.01);
 
             // Tweak materials a bit
             data.traverse(obj => {
@@ -62,27 +62,27 @@ export class AssetLoader {
         });
 
         fbxLoader.load('./assets/walking.fbx', data => {
-            this.insertAnimation('character', 'walking', data);
+            this.insertAnimation('character', 'walk_forward', data);
         });
 
         fbxLoader.load('./assets/walking_left.fbx', data => {
-            this.insertAnimation('character', 'walking_left', data);
+            this.insertAnimation('character', 'walk_left', data);
         });
 
         fbxLoader.load('./assets/walking_right.fbx', data => {
-            this.insertAnimation('character', 'walking_right', data);
+            this.insertAnimation('character', 'walk_right', data);
         });
 
         fbxLoader.load('./assets/running.fbx', data => {
-            this.insertAnimation('character', 'running', data);
+            this.insertAnimation('character', 'run_forward', data);
         });
 
         fbxLoader.load('./assets/running_left.fbx', data => {
-            this.insertAnimation('character', 'running_left', data);
+            this.insertAnimation('character', 'run_left', data);
         });
 
         fbxLoader.load('./assets/running_right.fbx', data => {
-            this.insertAnimation('character', 'running_right', data);
+            this.insertAnimation('character', 'run_right', data);
         });
     }
 

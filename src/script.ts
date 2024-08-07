@@ -30,22 +30,22 @@ const assetLoader = new AssetLoader();
 
 const inputs: { [key: string]: HTMLInputElement } = {
     idle: document.getElementById('idle')! as HTMLInputElement,
-    forward_walk: document.getElementById('forward_walk')! as HTMLInputElement,
-    forward_run: document.getElementById('forward_run')! as HTMLInputElement,
-    left_walk: document.getElementById('left_walk')! as HTMLInputElement,
-    left_run: document.getElementById('left_run')! as HTMLInputElement,
-    right_walk: document.getElementById('right_walk')! as HTMLInputElement,
-    right_run: document.getElementById('right_run')! as HTMLInputElement,
+    walk_forward: document.getElementById('walk_forward')! as HTMLInputElement,
+    run_forward: document.getElementById('run_forward')! as HTMLInputElement,
+    walk_left: document.getElementById('walk_left')! as HTMLInputElement,
+    run_left: document.getElementById('run_left')! as HTMLInputElement,
+    walk_right: document.getElementById('walk_right')! as HTMLInputElement,
+    run_right: document.getElementById('run_right')! as HTMLInputElement,
 };
 
 const weights: { [key: string]: number } = {
-    idle: 0,
-    forward_walk: 0,
-    forward_run: 0,
-    left_walk: 0,
-    left_run: 0,
-    right_walk: 0,
-    right_run: 0,
+    idle: 1,
+    walk_forward: 0,
+    run_forward: 0,
+    walk_left: 0,
+    run_left: 0,
+    walk_right: 0,
+    run_right: 0,
 };
 
 const handleInput = (e: Event) => {
@@ -90,7 +90,7 @@ function update() {
     const delta = clock.getDelta();
 
     // Update the viewer
-    viewer.update(delta);
+    viewer.update(delta, weights);
 
     window.requestAnimationFrame(update);
 }

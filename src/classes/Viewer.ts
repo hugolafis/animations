@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { AssetLoader } from './AssetLoader';
+import { Character } from './Character';
 
 export class Viewer {
     private camera: THREE.PerspectiveCamera;
@@ -10,7 +11,7 @@ export class Viewer {
     private readonly canvasSize: THREE.Vector2;
     private readonly renderSize: THREE.Vector2;
 
-    private readonly character: THREE.Group;
+    private readonly character: Character;
 
     constructor(
         private readonly renderer: THREE.WebGLRenderer,
@@ -37,18 +38,18 @@ export class Viewer {
         const dirLightRight = new THREE.DirectionalLight(0xff5e00, 1.5);
         dirLightRight.position.set(1, 1, -0.5).normalize();
 
-        const ambient = new THREE.AmbientLight(0xffffff, 0.1);
+        const ambient = new THREE.AmbientLight(0xffffff, 0.25);
         this.scene.add(sun, dirLightLeft, dirLightRight);
         this.scene.add(ambient);
 
-        this.character = this.assetLoader.meshes.get('character')!;
+        this.character = new Character(this.assetLoader);
         this.scene.add(this.character);
 
         const grid = new THREE.GridHelper(10, 10);
         this.scene.add(grid);
     }
 
-    readonly update = (dt: number) => {
+    readonly update = (dt: number, weights: { [key: string]: number }) => {
         this.controls.update();
 
         // Do we need to resize the renderer?
@@ -63,6 +64,8 @@ export class Viewer {
             this.camera.aspect = this.renderSize.x / this.renderSize.y;
             this.camera.updateProjectionMatrix();
         }
+
+        this.character.update(dt, weights);
 
         this.renderer.render(this.scene, this.camera);
     };
