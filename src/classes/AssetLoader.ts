@@ -30,7 +30,7 @@ export class AssetLoader {
 
     // Character mesh
     private loadModels(fbxLoader: FBXLoader) {
-        fbxLoader.load('./assets/Y Bot.fbx', data => {
+        fbxLoader.load('./assets/character.fbx', data => {
             data.scale.multiplyScalar(0.01);
 
             // Tweak materials a bit

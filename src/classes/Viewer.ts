@@ -42,11 +42,12 @@ export class Viewer {
         this.scene.add(sun, dirLightLeft, dirLightRight);
         this.scene.add(ambient);
 
-        this.character = new Character(this.assetLoader);
-        this.scene.add(this.character);
-
         const grid = new THREE.GridHelper(10, 10);
         this.scene.add(grid);
+
+        // Character
+        this.character = new Character(this.assetLoader);
+        this.scene.add(this.character);
     }
 
     readonly update = (dt: number, weights: { [key: string]: number }) => {

@@ -26,9 +26,6 @@ export class Character extends THREE.Group {
     }
 
     update(dt: number, weights: { [key: string]: number }) {
-        //const priorityWeight = Array.from(weights);
-        //const priorityAnim = this._animations.get(priorityWeight.name)!;
-
         // Find the priority anim (that is not idle!)
         let priorityAnimKey = 'walk_forward';
         for (const key in weights) {
