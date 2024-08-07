@@ -1,19 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>template - three.js</title>
-  </head>
-  <body>
-    <div class="controls">
-      <h2>Animation Weights</h2>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>template - three.js</title>
+    </head>
+    <body>
+        <div class="controls">
+            <h2>Animation Weights</h2>
 
-      <label
-        >Forward
-        <input type="range" min="0" max="100" value="0" />
-      </label>
-    </div>
-    <canvas class="webgl" tabindex="1" oncontextmenu="return false;"></canvas>
-  </body>
+            <label
+                >Idle
+                <input type="range" min="0" max="100" value="100" id="idle" />
+            </label>
+
+            <label
+                >Forward (walking)
+                <input type="range" min="0" max="100" value="0" id="forward_walk" />
+            </label>
+
+            <label
+                >Forward (running)
+                <input type="range" min="0" max="100" value="0" id="forward_run" />
+            </label>
+
+            <label
+                >Left (walking)
+                <input type="range" min="0" max="100" value="0" id="left_walk" />
+            </label>
+
+            <label
+                >Left (running)
+                <input type="range" min="0" max="100" value="0" id="left_run" />
+            </label>
+
+            <label
+                >Right (walking)
+                <input type="range" min="0" max="100" value="0" id="right_walk" />
+            </label>
+
+            <label
+                >Right (running)
+                <input type="range" min="0" max="100" value="0" id="right_run" />
+            </label>
+        </div>
+        <canvas class="webgl" tabindex="1" oncontextmenu="return false;"></canvas>
+    </body>
 </html>

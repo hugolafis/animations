@@ -31,7 +31,25 @@ export class AssetLoader {
     // Character mesh
     private loadModels(fbxLoader: FBXLoader) {
         fbxLoader.load('./assets/character.fbx', data => {
-            data.scale.multiplyScalar(0.01);
+            //data.scale.multiplyScalar(0.01);
+
+            // Tweak materials a bit
+            data.traverse(obj => {
+                if (obj instanceof THREE.Mesh) {
+                    const originalMat = obj.material as THREE.MeshPhongMaterial;
+                    const material = new THREE.MeshPhysicalMaterial({ color: originalMat.color });
+
+                    if (originalMat.name.toLowerCase().includes('body')) {
+                        material.roughness = 0.4;
+                        material.ior = 1.4;
+                    } else {
+                        material.roughness = 0.75;
+                        material.ior = 1.5;
+                    }
+
+                    obj.material = material;
+                }
+            });
 
             this.meshes.set('character', data);
         });
