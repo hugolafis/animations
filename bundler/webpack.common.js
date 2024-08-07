@@ -1,7 +1,6 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
-const glslify = require('glslify');
 const path = require('path');
 
 module.exports = {
@@ -37,17 +36,6 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
-      },
-      // // GLSL
-      // {
-      //   test: /\.(glsl|vert|frag)$/,
-      //   loader: 'ts-shader-loader',
-      // },
-      // glslify
-      {
-        test: /\.(glsl|vs|fs|vert|frag)$/,
-        exclude: /node_modules/,
-        use: ['raw-loader', 'glslify-loader'],
       },
       // JS
       {
